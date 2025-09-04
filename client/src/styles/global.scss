@@ -1,0 +1,24 @@
+@use './themes/theme';
+
+html {
+	transition:
+		background-color 0.3s ease,
+		color 0.3s ease;
+
+	background-color: var(--background-color);
+	color: var(--foreground-color);
+}
+
+a {
+	color: var(--primary-a20-color);
+}
+
+.header {
+	background-color: var(--surface-a0-color);
+	color: var(--foreground-color);
+}
+
+.card {
+	background-color: var(--surface-tonal-a10-color);
+	border: 1px solid var(--surface-tonal-a20-color);
+}
