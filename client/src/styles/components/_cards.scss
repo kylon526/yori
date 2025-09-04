@@ -1,0 +1,46 @@
+@use 'sass:list';
+
+/** -------------------------------
+ * Card nesting generator
+ * ------------------------------- */
+@mixin generate-card-styles($theme-name, $steps) {
+	.#{$theme-name} {
+		.card {
+			@for $i from 1 through list.length($steps) {
+				$bg: list.nth($steps, $i);
+
+				// if it's the last one, use aMax, else use the next step
+				$border: if($i == list.length($steps), aMax, list.nth($steps, $i + 1));
+
+				@if $i == 1 {
+					// first card (no extra nesting)
+					background-color: var(--surface-#{$bg}-color);
+					border: 1px solid var(--surface-#{$border}-color);
+				} @else {
+					// deeper nesting
+					#{'& ' + str-repeat('.card ', $i - 1)} {
+						background-color: var(--surface-#{$bg}-color);
+						border: 1px solid var(--surface-#{$border}-color);
+					}
+				}
+			}
+		}
+	}
+}
+
+// helper function to repeat strings
+@function str-repeat($string, $count) {
+	$result: '';
+	@for $i from 1 through $count {
+		$result: $result + $string;
+	}
+	@return $result;
+}
+
+/** -------------------------------
+ * Call the mixin for each theme
+ * ------------------------------- */
+$surface-steps: (a10, a20, a30, a40, a50);
+
+@include generate-card-styles(light, $surface-steps);
+@include generate-card-styles(dark, $surface-steps);

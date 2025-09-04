@@ -6,6 +6,17 @@
 <p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
 <ToggleTheme />
 
+<div class="card">
+	<div class="card">
+		<div class="card">
+			<div class="card">
+				<div class="card">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 <style lang="scss">
 	h1 {
 		color: var(--primary-a50-color);
