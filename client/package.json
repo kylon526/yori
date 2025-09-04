@@ -44,5 +44,9 @@
 		"onlyBuiltDependencies": [
 			"esbuild"
 		]
+	},
+	"dependencies": {
+		"@clerk/themes": "^2.4.17",
+		"svelte-clerk": "^0.16.11"
 	}
 }

@@ -1,36 +1,38 @@
+@use 'colorffy-dark-theme' as theme;
+
 /** -------------------------------
  * Primary colors
  * ------------------------------- */
 $primary-colors: (
-	a0: #5b198d,
-	a10: #6f359a,
-	a20: #814da6,
-	a30: #9466b3,
-	a40: #a67ec0,
-	a50: #b897cd
+	a0: theme.$clr-primary-a0,
+	a10: theme.$clr-primary-a10,
+	a20: theme.$clr-primary-a20,
+	a30: theme.$clr-primary-a30,
+	a40: theme.$clr-primary-a40,
+	a50: theme.$clr-primary-a50
 );
 
 /** -------------------------------
  * Surface colors
  * ------------------------------- */
 $surface-colors: (
-	a0: #1a1d26,
-	a10: #2f323a,
-	a20: #464850,
-	a30: #5d5f67,
-	a40: #76787e,
-	a50: #909197,
-	aMax: #acaeb6
+	a0: theme.$clr-surface-a0,
+	a10: theme.$clr-surface-a10,
+	a20: theme.$clr-surface-a20,
+	a30: theme.$clr-surface-a30,
+	a40: theme.$clr-surface-a40,
+	a50: theme.$clr-surface-a50,
+	aMax: darken(theme.$clr-surface-a0, 10%)
 );
 
 /** -------------------------------
  * Tonal surface colors
  * ------------------------------- */
 $surface-tonal-colors: (
-	a0: #211e2f,
-	a10: #363343,
-	a20: #4c4958,
-	a30: #63606e,
-	a40: #7b7984,
-	a50: #94929c
+	a0: theme.$clr-surface-tonal-a0,
+	a10: theme.$clr-surface-tonal-a10,
+	a20: theme.$clr-surface-tonal-a20,
+	a30: theme.$clr-surface-tonal-a30,
+	a40: theme.$clr-surface-tonal-a40,
+	a50: theme.$clr-surface-tonal-a50
 );

@@ -1,24 +1,23 @@
-<script>
-	import ToggleTheme from "$lib/ToggleTheme.svelte";
-
+<script lang="ts">
+	import Authenticate from '$lib/components/auth/Authenticate.svelte';
+	import ToggleTheme from '$lib/ToggleTheme.svelte';
+	import { SignedOut } from 'svelte-clerk';
 </script>
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
-<ToggleTheme />
 
-<div class="card">
-	<div class="card">
-		<div class="card">
-			<div class="card">
-				<div class="card">
-				</div>
-			</div>
-		</div>
-	</div>
+<header>
+	<SignedOut>
+		<Authenticate />
+	</SignedOut>
+</header>
+
+<div class="theme-toggle">
+	<ToggleTheme />
 </div>
 
 <style lang="scss">
-	h1 {
-		color: var(--primary-a50-color);
+	.theme-toggle {
+		position: absolute;
+		bottom: 0.5rem;
+		right: 0.5rem;
 	}
 </style>
