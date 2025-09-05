@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Authenticate from '$lib/components/auth/Authenticate.svelte';
+	import Card from '$lib/components/cards/Card.svelte';
 	import ToggleTheme from '$lib/ToggleTheme.svelte';
 	import { SignedOut } from 'svelte-clerk';
 </script>

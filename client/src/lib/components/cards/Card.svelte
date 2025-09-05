@@ -1,7 +1,7 @@
 <script lang="ts">
-  let props = $props();
+	let props = $props();
 </script>
 
 <div class="card" style={props.style}>
-  <slot />
+	<slot />
 </div>

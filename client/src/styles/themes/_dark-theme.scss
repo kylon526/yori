@@ -1,4 +1,5 @@
 @use 'colorffy-dark-theme' as theme;
+@use 'sass:color';
 
 /** -------------------------------
  * Primary colors
@@ -22,7 +23,7 @@ $surface-colors: (
 	a30: theme.$clr-surface-a30,
 	a40: theme.$clr-surface-a40,
 	a50: theme.$clr-surface-a50,
-	aMax: darken(theme.$clr-surface-a0, 10%)
+	aMax: lighten(theme.$clr-surface-a0, 10%)
 );
 
 /** -------------------------------

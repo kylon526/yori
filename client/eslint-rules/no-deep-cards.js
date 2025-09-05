@@ -2,40 +2,39 @@ const noDeepCardsRule = {
 	meta: {
 		type: 'problem',
 		docs: {
-			description: 'Disallow more than 5 nested .card elements',
+			description: 'Disallow more than 5 nested <Card> components',
 			recommended: false
 		},
-		schema: [] // no options
+		schema: []
 	},
 	create(context) {
-		// Helper: recursively count card depth
-		function checkNode(node, depth = 0) {
-			if (
-				node.type === 'SvelteElement' &&
-				node.startTag.attributes.some(
-					(attr) =>
-						attr.type === 'SvelteAttribute' &&
-						attr.key.name === 'class' &&
-						attr.value.some((v) => v.type === 'SvelteLiteral' && v.value.includes('card'))
-				)
-			) {
-				depth++;
-				if (depth > 5) {
-					context.report({
-						node,
-						message: `Too many nested .card elements (depth=${depth}, max=5).`
-					});
-				}
-			}
+		let depth = 0;
 
-			if (node.children) {
-				node.children.forEach((child) => checkNode(child, depth));
-			}
+		function isCardComponent(node) {
+			return (
+				node.type === 'SvelteElement' &&
+				node.name &&
+				node.name.type === 'Identifier' &&
+				node.name.name === 'Card'
+			);
 		}
 
 		return {
 			SvelteElement(node) {
-				checkNode(node, 0);
+				if (isCardComponent(node)) {
+					depth++;
+					if (depth > 5) {
+						context.report({
+							node,
+							message: `Too many nested <Card> components (depth=${depth}, max=5).`
+						});
+					}
+				}
+			},
+			'SvelteElement:exit'(node) {
+				if (isCardComponent(node)) {
+					depth--;
+				}
 			}
 		};
 	}

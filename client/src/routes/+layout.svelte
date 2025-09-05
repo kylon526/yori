@@ -1,7 +1,7 @@
 <script lang="ts">
 	import favicon from '$lib/assets/favicon.svg';
 	import '$styles/global.scss';
-	import { ClerkProvider, SignedIn, UserButton } from 'svelte-clerk';
+	import { ClerkProvider, SignedIn } from 'svelte-clerk';
 	import { dark } from '@clerk/themes';
 	import { theme } from '../stores/theme';
 	import Header from '$lib/components/layouts/Header.svelte';
