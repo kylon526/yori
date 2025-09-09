@@ -1,0 +1,56 @@
+.toggleSwitch {
+  width: 70px;
+  height: 34px;
+  background-color: var(--surface-a30-color);
+  border-radius: 17px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 8.5px;
+  border: none;
+
+  .sun,
+  .moon {
+    font-size: 17px;
+    margin-top: -3px;
+  }
+
+  .moon {
+    margin-top: -3px;
+  }
+
+  .knob {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: auto;
+    width: 30px;
+    height: 30px;
+    background-color: var(--primary-a50-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: transform 0.3s, background-color 0.3s;
+
+    &.dark {
+      transform: translateX(
+        36px
+      ); // 70 - 34 = 36px, matches container width minus knob width
+      background-color: var(--surface-a50-color);
+    }
+  }
+}
+
+.labelText {
+  display: inline-block;
+  margin-left: 0.75rem;
+  font-weight: 500;
+  vertical-align: middle;
+  user-select: none;
+  width: 10ch;
+}

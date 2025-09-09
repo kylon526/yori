@@ -1,0 +1,38 @@
+@use 'colorffy-light-theme' as theme;
+
+/** -------------------------------
+ * Primary colors
+ * ------------------------------- */
+$primary-colors: (
+	a0: theme.$clr-primary-a0,
+	a10: theme.$clr-primary-a10,
+	a20: theme.$clr-primary-a20,
+	a30: theme.$clr-primary-a30,
+	a40: theme.$clr-primary-a40,
+	a50: theme.$clr-primary-a50
+);
+
+/** -------------------------------
+ * Surface colors
+ * ------------------------------- */
+$surface-colors: (
+	a0: theme.$clr-surface-a0,
+	a10: theme.$clr-surface-a10,
+	a20: theme.$clr-surface-a20,
+	a30: theme.$clr-surface-a30,
+	a40: theme.$clr-surface-a40,
+	a50: theme.$clr-surface-a50,
+	aMax: darken(theme.$clr-surface-a0, 10%)
+);
+
+/** -------------------------------
+ * Tonal surface colors
+ * ------------------------------- */
+$surface-tonal-colors: (
+	a0: theme.$clr-surface-tonal-a0,
+	a10: theme.$clr-surface-tonal-a10,
+	a20: theme.$clr-surface-tonal-a20,
+	a30: theme.$clr-surface-tonal-a30,
+	a40: theme.$clr-surface-tonal-a40,
+	a50: theme.$clr-surface-tonal-a50
+);
