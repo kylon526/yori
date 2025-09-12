@@ -8,6 +8,7 @@ export default function RegisterPage() {
 
   return (
     <motion.div
+      key="register-page"
       layout
       initial={{ x: "50%", opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}

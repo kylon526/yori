@@ -1,11 +1,19 @@
-import Image from "next/image";
+"use client";
+
+import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
-import ThemeToggle from "@/components/ui/theme-controls/ThemeToggle";
+import { useAuth } from "@/components/context/AuthContext";
+import { useEffect } from "react";
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}></main>
-    </div>
-  );
+  const router = useRouter();
+  const { accessToken } = useAuth();
+
+  useEffect(() => {
+    if (!accessToken) {
+      router.push("/login");
+    } else {
+      router.push("/dashboard");
+    }
+  }, [accessToken, router]);
 }

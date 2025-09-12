@@ -1,5 +1,6 @@
-import SlideInOut from "@/components/ui/animation/SlideInOut";
-import { AnimatePresence } from "framer-motion";
+"use client";
+import { ResendProvider } from "@/components/context/ResendContext";
+import Logo from "@/components/ui/logo/Logo";
 
 export default function UserAccessLayout({
   children,
@@ -7,21 +8,23 @@ export default function UserAccessLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <AnimatePresence mode="wait">
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-        }}
-      >
-        {children}
-      </div>
-    </AnimatePresence>
+    <div
+      style={{
+        display: "grid",
+        gridTemplateRows: "30% 1fr",
+        alignItems: "center",
+        justifyContent: "space-around",
+        position: "absolute",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+      }}
+    >
+      <Logo />
+      <ResendProvider>
+        <div style={{ alignSelf: "start" }}>{children}</div>
+      </ResendProvider>
+    </div>
   );
 }

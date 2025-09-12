@@ -1,0 +1,17 @@
+.inputContainer {
+  display: flex;
+  gap: 0.5rem;
+
+  .input {
+    font-size: 32px;
+    width: 1lh;
+    border: none;
+    text-align: center;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+
+    &:focus-visible {
+      outline-color: var(--primary-a10-color);
+    }
+  }
+}

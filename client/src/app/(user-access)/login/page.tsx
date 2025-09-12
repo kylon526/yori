@@ -1,26 +1,91 @@
 "use client";
 
+import { useAuth } from "@/components/context/AuthContext";
+import { useResend } from "@/components/context/ResendContext";
+import Card from "@/components/ui/card/Card";
+import MotionSpinner from "@/components/ui/loading/MotionSpinner";
+import Button from "@/components/ui/primitive/buttons/Button";
+import EmailInput from "@/components/ui/primitive/inputs/EmailInput";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { FormEvent, useEffect, useState } from "react";
 
 export default function LoginPage() {
+  const [loading, setLoading] = useState<boolean>(false);
+  const [sendError, setSendError] = useState<Error>();
+
   const router = useRouter();
+  const { isSending, error, sendMfaCode, success, resetResendContext } =
+    useResend();
+  const { accessToken, email, waitingOnToken, setEmail, refreshToken } =
+    useAuth();
+
+  async function handleLogin(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setLoading(true);
+
+    if (!isSending) {
+      sendMfaCode(email);
+    }
+  }
+
+  useEffect(() => {
+    if (accessToken) {
+      router.push("/dashboard");
+    } else {
+      refreshToken();
+    }
+  }, [accessToken]);
+
+  useEffect(() => {
+    if (isSending) return;
+
+    if (success) {
+      router.push("/mfa");
+      resetResendContext();
+      return;
+    }
+
+    if (error) {
+      setLoading(false);
+      setSendError(new Error(error));
+    }
+  }, [success, error, isSending]);
 
   return (
-    <motion.div
-      layout
-      initial={{ x: "50%", opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      exit={{ x: "-50%", opacity: 0 }}
-      transition={{ duration: 0.4, ease: "easeInOut" }}
-    >
-      <h1 className="text-2xl font-bold mb-4">Login Page</h1>
-      <button
-        onClick={() => router.push("/register")}
-        className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+    <>
+      <motion.div
+        key="login-page"
+        layout
+        initial={{ x: "50%", opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        exit={{ x: "-50%", opacity: 0 }}
+        transition={{ duration: 0.2 }}
       >
-        Go to Register
-      </button>
-    </motion.div>
+        <Card flexLayout>
+          <h1>Login</h1>
+          {(loading || waitingOnToken) && <MotionSpinner />}
+          {!loading && !waitingOnToken && (
+            <>
+              <form onSubmit={handleLogin}>
+                {sendError && (
+                  <div style={{ color: "red" }}>{sendError.message}</div>
+                )}
+                <EmailInput
+                  label="Email"
+                  id="email"
+                  onChange={setEmail}
+                  required
+                />
+                <Button>Continue With Email</Button>
+              </form>
+              <span>
+                Don't have an account? <a href="/register">Register</a>
+              </span>
+            </>
+          )}
+        </Card>
+      </motion.div>
+    </>
   );
 }

@@ -4,6 +4,7 @@ import "../styles/global.scss";
 import { ThemeProvider } from "@/components/context/ThemeContext";
 import ThemeToggle from "@/components/ui/theme-controls/ThemeToggle";
 import styles from "./page.module.css";
+import { AuthProvider } from "@/components/context/AuthContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,12 +29,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <ThemeProvider>
-          {children}
-          <div className={styles.themeToggle}>
-            <ThemeToggle />
-          </div>
-        </ThemeProvider>
+        <AuthProvider>
+          <ThemeProvider>
+            {children}
+            <div className={styles.themeToggle}>
+              <ThemeToggle />
+            </div>
+          </ThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   );

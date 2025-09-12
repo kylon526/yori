@@ -7,7 +7,15 @@ export default function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <div style={{ display: "flex", alignItems: "center" }}>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        position: "fixed",
+        bottom: "0.5rem",
+        right: "0.5rem",
+      }}
+    >
       <button
         className={`${classes.toggleSwitch} ${theme}`}
         onClick={toggleTheme}
