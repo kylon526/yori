@@ -44,8 +44,8 @@ export default function MFAIcon() {
           x2="263.30502"
           y2="460.62399"
         >
-          <stop offset="0" stop-color="#1A4A56" />
-          <stop offset="1" stop-color="#135E65" />
+          <stop offset="0" stopColor="#1A4A56" />
+          <stop offset="1" stopColor="#135E65" />
         </linearGradient>
       </defs>
       <path
@@ -137,8 +137,8 @@ export default function MFAIcon() {
           x2="704.71857"
           y2="615.20715"
         >
-          <stop offset="0" stop-color="#15414B" />
-          <stop offset="1" stop-color="#2C6866" />
+          <stop offset="0" stopColor="#15414B" />
+          <stop offset="1" stopColor="#2C6866" />
         </linearGradient>
       </defs>
       <path
@@ -310,8 +310,8 @@ export default function MFAIcon() {
           x2="833.43689"
           y2="835.48932"
         >
-          <stop offset="0" stop-color="#77A691" />
-          <stop offset="1" stop-color="#9CBCA5" />
+          <stop offset="0" stopColor="#77A691" />
+          <stop offset="1" stopColor="#9CBCA5" />
         </linearGradient>
       </defs>
       <path
@@ -331,8 +331,8 @@ export default function MFAIcon() {
           x2="329.59872"
           y2="824.94336"
         >
-          <stop offset="0" stop-color="#7A4440" />
-          <stop offset="1" stop-color="#9C5948" />
+          <stop offset="0" stopColor="#7A4440" />
+          <stop offset="1" stopColor="#9C5948" />
         </linearGradient>
       </defs>
       <path

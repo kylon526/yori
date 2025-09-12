@@ -48,8 +48,8 @@ export default function DashboardIcon() {
           x2="664.24493"
           y2="289.06705"
         >
-          <stop offset="0" stop-color="#FFD0C7" />
-          <stop offset="1" stop-color="#FFE8DD" />
+          <stop offset="0" stopColor="#FFD0C7" />
+          <stop offset="1" stopColor="#FFE8DD" />
         </linearGradient>
       </defs>
       <path
@@ -105,8 +105,8 @@ export default function DashboardIcon() {
           x2="494.84839"
           y2="473.90228"
         >
-          <stop offset="0" stop-color="#52251D" />
-          <stop offset="1" stop-color="#6B504C" />
+          <stop offset="0" stopColor="#52251D" />
+          <stop offset="1" stopColor="#6B504C" />
         </linearGradient>
       </defs>
       <path
@@ -150,8 +150,8 @@ export default function DashboardIcon() {
           x2="798.68262"
           y2="633.85089"
         >
-          <stop offset="0" stop-color="#200" />
-          <stop offset="1" stop-color="#47261C" />
+          <stop offset="0" stopColor="#200" />
+          <stop offset="1" stopColor="#47261C" />
         </linearGradient>
       </defs>
       <path
@@ -195,8 +195,8 @@ export default function DashboardIcon() {
           x2="663.85217"
           y2="573.77356"
         >
-          <stop offset="0" stop-color="#FDD9C0" />
-          <stop offset="1" stop-color="#FFF9F2" />
+          <stop offset="0" stopColor="#FDD9C0" />
+          <stop offset="1" stopColor="#FFF9F2" />
         </linearGradient>
       </defs>
       <path
@@ -304,8 +304,8 @@ export default function DashboardIcon() {
           x2="92.236336"
           y2="727.91132"
         >
-          <stop offset="0" stop-color="#331F16" />
-          <stop offset="1" stop-color="#4C1E1B" />
+          <stop offset="0" stopColor="#331F16" />
+          <stop offset="1" stopColor="#4C1E1B" />
         </linearGradient>
       </defs>
       <path
@@ -377,8 +377,8 @@ export default function DashboardIcon() {
           x2="750.27124"
           y2="799.46539"
         >
-          <stop offset="0" stop-color="#180603" />
-          <stop offset="1" stop-color="#381614" />
+          <stop offset="0" stopColor="#180603" />
+          <stop offset="1" stopColor="#381614" />
         </linearGradient>
       </defs>
       <path

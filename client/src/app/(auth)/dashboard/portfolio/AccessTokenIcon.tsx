@@ -232,8 +232,8 @@ export default function AccessTokenIcon() {
           x2="329.46213"
           y2="562.77716"
         >
-          <stop offset="0" stop-color="#E5C88D" />
-          <stop offset="1" stop-color="#FFF9DC" />
+          <stop offset="0" stopColor="#E5C88D" />
+          <stop offset="1" stopColor="#FFF9DC" />
         </linearGradient>
       </defs>
       <path
@@ -285,8 +285,8 @@ export default function AccessTokenIcon() {
           x2="342.86282"
           y2="602.1344"
         >
-          <stop offset="0" stop-color="#30362E" />
-          <stop offset="1" stop-color="#1B3A40" />
+          <stop offset="0" stopColor="#30362E" />
+          <stop offset="1" stopColor="#1B3A40" />
         </linearGradient>
       </defs>
       <path
@@ -418,8 +418,8 @@ export default function AccessTokenIcon() {
           x2="614.06537"
           y2="794.31085"
         >
-          <stop offset="0" stop-color="#223B27" />
-          <stop offset="1" stop-color="#303339" />
+          <stop offset="0" stopColor="#223B27" />
+          <stop offset="1" stopColor="#303339" />
         </linearGradient>
       </defs>
       <path

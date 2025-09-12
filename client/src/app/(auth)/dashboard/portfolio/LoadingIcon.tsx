@@ -28,8 +28,8 @@ export default function LoadingIcon() {
           x2="805.75696"
           y2="427.55319"
         >
-          <stop offset="0" stop-color="#EE7447" />
-          <stop offset="1" stop-color="#ECB28A" />
+          <stop offset="0" stopColor="#EE7447" />
+          <stop offset="1" stopColor="#ECB28A" />
         </linearGradient>
       </defs>
       <path
@@ -49,8 +49,8 @@ export default function LoadingIcon() {
           x2="809.50244"
           y2="336.07373"
         >
-          <stop offset="0" stop-color="#C9CBB6" />
-          <stop offset="1" stop-color="#FFF6ED" />
+          <stop offset="0" stopColor="#C9CBB6" />
+          <stop offset="1" stopColor="#FFF6ED" />
         </linearGradient>
       </defs>
       <path
@@ -214,8 +214,8 @@ export default function LoadingIcon() {
           x2="214.62741"
           y2="662.1842"
         >
-          <stop offset="0" stop-color="#D9E3DF" />
-          <stop offset="1" stop-color="#FDFCFD" />
+          <stop offset="0" stopColor="#D9E3DF" />
+          <stop offset="1" stopColor="#FDFCFD" />
         </linearGradient>
       </defs>
       <path
@@ -291,8 +291,8 @@ export default function LoadingIcon() {
           x2="364.63263"
           y2="813.0451"
         >
-          <stop offset="0" stop-color="#7FAC8E" />
-          <stop offset="1" stop-color="#A6C2A4" />
+          <stop offset="0" stopColor="#7FAC8E" />
+          <stop offset="1" stopColor="#A6C2A4" />
         </linearGradient>
       </defs>
       <path
@@ -356,8 +356,8 @@ export default function LoadingIcon() {
           x2="782.0127"
           y2="874.85791"
         >
-          <stop offset="0" stop-color="#59281E" />
-          <stop offset="1" stop-color="#7A5850" />
+          <stop offset="0" stopColor="#59281E" />
+          <stop offset="1" stopColor="#7A5850" />
         </linearGradient>
       </defs>
       <path
@@ -389,8 +389,8 @@ export default function LoadingIcon() {
           x2="547.72327"
           y2="889.6424"
         >
-          <stop offset="0" stop-color="#7A3314" />
-          <stop offset="1" stop-color="#7F3B3F" />
+          <stop offset="0" stopColor="#7A3314" />
+          <stop offset="1" stopColor="#7F3B3F" />
         </linearGradient>
       </defs>
       <path

@@ -20,8 +20,8 @@ export default function UserLoginIcon() {
           x2="577.71399"
           y2="930.33063"
         >
-          <stop offset="0" stop-color="#49302E" />
-          <stop offset="1" stop-color="#5D4842" />
+          <stop offset="0" stopColor="#49302E" />
+          <stop offset="1" stopColor="#5D4842" />
         </linearGradient>
       </defs>
       <path

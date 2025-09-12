@@ -116,8 +116,8 @@ export default function RefreshAccessTokenIcon() {
           x2="802.78174"
           y2="495.63586"
         >
-          <stop offset="0" stop-color="#0D4B42" />
-          <stop offset="1" stop-color="#226C50" />
+          <stop offset="0" stopColor="#0D4B42" />
+          <stop offset="1" stopColor="#226C50" />
         </linearGradient>
       </defs>
       <path
