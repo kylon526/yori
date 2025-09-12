@@ -6,11 +6,9 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 interface AuthContext {
   email: string;
-  mfaValidated: boolean;
   accessToken: string;
   waitingOnToken: boolean;
   setEmail: (email: string) => void;
-  setMfaValidated: (valid: boolean) => void;
   setAccessToken: (token: string) => void;
   refreshToken: () => Promise<void>;
 }
@@ -19,7 +17,6 @@ const AuthContext = createContext<AuthContext | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [email, setEmail] = useState<string>("");
-  const [mfaValidated, setMfaValidated] = useState<boolean>(false);
   const [accessToken, setAccessToken] = useState<string>("");
   const [waitingOnToken, setWaitingOnToken] = useState<boolean>(false);
 
@@ -49,11 +46,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     <AuthContext.Provider
       value={{
         email,
-        mfaValidated,
         accessToken,
         waitingOnToken,
         setEmail,
-        setMfaValidated,
         setAccessToken,
         refreshToken,
       }}

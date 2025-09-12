@@ -35,7 +35,7 @@ export default function LoginPage() {
     } else {
       refreshToken();
     }
-  }, [accessToken]);
+  }, [accessToken, router, refreshToken]);
 
   useEffect(() => {
     if (isSending) return;
@@ -50,7 +50,7 @@ export default function LoginPage() {
       setLoading(false);
       setSendError(new Error(error));
     }
-  }, [success, error, isSending]);
+  }, [success, error, isSending, router, resetResendContext]);
 
   return (
     <>
@@ -80,7 +80,7 @@ export default function LoginPage() {
                 <Button>Continue With Email</Button>
               </form>
               <span>
-                Don't have an account? <a href="/register">Register</a>
+                Don&apos;t have an account? <a href="/register">Register</a>
               </span>
             </>
           )}

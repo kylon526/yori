@@ -2,7 +2,7 @@ import { jwtDecode } from "jwt-decode";
 
 interface JwtPayload {
   exp: number;
-  [key: string]: any;
+  [key: string]: number | string | boolean | bigint | symbol | object;
 }
 
 export function isTokenExpired(token: string): boolean {

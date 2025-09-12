@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import { useEffect } from "react";
 import styles from "./Modal.module.scss";
 import { AnimatePresence, motion } from "framer-motion";
 

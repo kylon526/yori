@@ -1,7 +1,6 @@
 "use client";
 
 import React, { createContext, useContext, useState, ReactNode } from "react";
-import { Resend } from "resend";
 
 // Define the shape of the context
 interface ResendContextType {
@@ -31,28 +30,26 @@ export const ResendProvider: React.FC<ResendProviderProps> = ({ children }) => {
 
   const sendMfaCode = async (email: string) => {
     resetResendContext();
+    const newCode = generateMfaCode();
 
-    try {
-      const newCode = generateMfaCode();
-
-      await fetch("/api/mfa/send", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          to: email,
-          subject: "Yori MFA Code",
-          code: newCode,
-        }),
-      }).catch((err) => {
-        throw new Error(err || "Failed to send MFA code");
+    await fetch("/api/mfa/send", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        to: email,
+        subject: "Yori MFA Code",
+        code: newCode,
+      }),
+    })
+      .then(() => {
+        setSuccess(true);
+      })
+      .catch((err) => {
+        setError(err.message || "Something went wrong");
+      })
+      .finally(() => {
+        setIsSending(false);
       });
-
-      setSuccess(true);
-    } catch (err: any) {
-      setError(err.message || "Something went wrong");
-    } finally {
-      setIsSending(false);
-    }
   };
 
   function resetResendContext() {

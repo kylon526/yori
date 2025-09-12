@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import styles from "./DashboardPage.module.scss"; // optional CSS module for styling
 import Card from "@/components/ui/card/Card";
 
@@ -55,7 +54,7 @@ export default function DashboardPage() {
   return (
     <div className={styles.dashboard}>
       <Logo />
-      <h1>Welcome to Kylon Tyner's portfolio project — Yori!</h1>
+      <h1>Welcome to Kylon Tyner&apos;s portfolio project — Yori!</h1>
       <p>
         You have just completed a{" "}
         <strong>secure multi-step authentication process</strong> designed to

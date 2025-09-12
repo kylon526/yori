@@ -1,4 +1,3 @@
-import { useResend } from "@/components/context/ResendContext";
 import { useUndo } from "@/components/context/UndoContext";
 import { useState, useRef, useEffect } from "react";
 import styles from "./mfa.module.scss";
@@ -11,7 +10,6 @@ interface MFAInputProps {
 export default function MFAInput({ onChange, onFinalInput }: MFAInputProps) {
   const [values, setValues] = useState<string[]>(Array(6).fill(""));
   const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
-  const [isValid, setIsValid] = useState<boolean | null>(null);
 
   const { execute } = useUndo();
 
@@ -43,7 +41,7 @@ export default function MFAInput({ onChange, onFinalInput }: MFAInputProps) {
 
   const handleKeyDown = (
     index: number,
-    e: React.KeyboardEvent<HTMLInputElement>
+    e: React.KeyboardEvent<HTMLInputElement>,
   ) => {
     if (e.key === "Backspace" && !values[index] && index > 0) {
       inputsRef.current[index - 1]?.focus();
@@ -67,10 +65,8 @@ export default function MFAInput({ onChange, onFinalInput }: MFAInputProps) {
     if (values.every((val) => val !== "")) {
       const enteredCode = values.join("");
       onFinalInput(enteredCode);
-    } else {
-      setIsValid(null);
     }
-  }, [values]);
+  }, [values, onFinalInput]);
 
   return (
     <div className={styles.inputContainer}>

@@ -1,5 +1,11 @@
 "use client";
-import { createContext, useContext, useEffect, useRef } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+} from "react";
 
 interface Command {
   do: () => void;
@@ -24,21 +30,21 @@ export function UndoProvider({ children }: { children: React.ReactNode }) {
     redoStack.current = []; // clear redo after new action
   };
 
-  const undo = () => {
+  const undo = useCallback(() => {
     const cmd = undoStack.current.pop();
     if (cmd) {
       cmd.undo();
       redoStack.current.push(cmd);
     }
-  };
+  }, [undoStack, redoStack]);
 
-  const redo = () => {
+  const redo = useCallback(() => {
     const cmd = redoStack.current.pop();
     if (cmd) {
       cmd.do();
       undoStack.current.push(cmd);
     }
-  };
+  }, [undoStack, redoStack]);
 
   // keyboard bindings
   useEffect(() => {

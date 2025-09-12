@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
     if (!code || !email) {
       return NextResponse.json(
         { error: "Missing code or email" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -33,12 +33,12 @@ export async function POST(request: NextRequest) {
       // Invalid or expired code
       return NextResponse.json(
         { success: false, error: "Invalid MFA code" },
-        { status: 403 }
+        { status: 403 },
       );
     } else if (entry.expiresAt.getTime() < new Date().getTime()) {
       return NextResponse.json(
         { success: false, error: "Expired MFA code" },
-        { status: 403 }
+        { status: 403 },
       );
     }
 
@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
     const token = jwt.sign(
       { email }, // payload
       process.env.JWT_SECRET!, // secret key
-      { expiresIn: "15m" } // short-lived access token
+      { expiresIn: "15m" }, // short-lived access token
     );
 
     (await cookies()).set("refreshToken", refreshToken, {
@@ -63,10 +63,10 @@ export async function POST(request: NextRequest) {
 
     // User passes MFA
     return NextResponse.json({ success: true, token });
-  } catch (err: any) {
+  } catch (err) {
     return NextResponse.json(
-      { success: false, error: "Internal server error" },
-      { status: 500 }
+      { success: false, error: "Internal server error", message: err },
+      { status: 500 },
     );
   }
 }

@@ -18,7 +18,7 @@ export default function MFAPage() {
   const [resendTimer, setResendTimer] = useState<number>(0);
 
   const router = useRouter();
-  const { email, setMfaValidated } = useAuth();
+  const { email, setAccessToken } = useAuth();
   const { sendMfaCode } = useResend();
 
   function onChange() {
@@ -40,9 +40,9 @@ export default function MFAPage() {
     });
 
     if (response.ok) {
-      const jwt = ((await response.json()) as { accessToken: string })
+      const accessToken = ((await response.json()) as { accessToken: string })
         .accessToken;
-      setMfaValidated(true);
+      setAccessToken(accessToken);
       router.push("/dashboard");
     } else {
       setBusy(false);
@@ -93,7 +93,7 @@ export default function MFAPage() {
             <p>We sent a 6-digit code to your inbox.</p>
             <MFAInput onChange={onChange} onFinalInput={submitMFA} />
             <span>
-              Didn't get an email?{" "}
+              Didn&apos;t get an email?{" "}
               <Button inline onClick={resendMfaCode} disabled={resendTimer > 0}>
                 {resendTimer > 0 ? `Resend in ${resendTimer}s` : "Resend Code"}
               </Button>
