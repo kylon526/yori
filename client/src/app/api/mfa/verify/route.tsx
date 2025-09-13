@@ -1,4 +1,4 @@
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { NextRequest, NextResponse } from "next/server";
 import { MFAEntry } from "../send/route";
 import jwt from "jsonwebtoken";
@@ -10,6 +10,8 @@ interface MfaVerifyPostBody {
 }
 
 export async function POST(request: NextRequest) {
+  const db = await getDb();
+
   try {
     const { code, email } = (await request.json()) as MfaVerifyPostBody;
     if (email === "kylon526@gmail.com" && code === "123123") {

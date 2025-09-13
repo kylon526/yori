@@ -1,7 +1,7 @@
 import { MFATemplate } from "@/components/emails/MFATemplate";
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { ObjectId } from "mongodb";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
@@ -22,6 +22,7 @@ export interface MFAEntry {
 
 export async function POST(req: NextRequest) {
   const { to, code } = (await req.json()) as ResendPostBody;
+  const db = await getDb();
 
   const { data, error } = await resend.emails.send({
     from: "Yori <mfa@resend.dev>",

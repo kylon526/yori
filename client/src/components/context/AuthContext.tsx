@@ -1,8 +1,7 @@
 "use client";
 
-import { isTokenExpired } from "@/lib/auth/checkTokenExpiry";
 import { refreshAccessToken } from "@/lib/auth/refreshToken";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 interface AuthContext {
   email: string;
@@ -11,6 +10,7 @@ interface AuthContext {
   setEmail: (email: string) => void;
   setAccessToken: (token: string) => void;
   refreshToken: () => Promise<void>;
+  logOut: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContext | undefined>(undefined);
@@ -20,26 +20,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [accessToken, setAccessToken] = useState<string>("");
   const [waitingOnToken, setWaitingOnToken] = useState<boolean>(false);
 
-  useEffect(() => {
-    if (!accessToken || isTokenExpired(accessToken)) {
-      refreshAccessToken().then((newToken) => {
-        if (newToken) setAccessToken(newToken);
-      });
-    }
-  }, [accessToken]);
-
   async function refreshToken() {
-    if (waitingOnToken || accessToken) return;
+    if (waitingOnToken) return;
 
     setWaitingOnToken(true);
-    const result = await fetch("/api/auth/refresh", { method: "POST" });
+    const newToken = await refreshAccessToken();
 
-    if (result.ok) {
-      const token = (await result.json()).accessToken;
-      setAccessToken(token);
+    if (newToken) {
+      setAccessToken(newToken);
     }
 
     setWaitingOnToken(false);
+  }
+
+  async function logOut() {
+    setAccessToken("");
+    await fetch("/api/auth/logout", { method: "POST" });
   }
 
   return (
@@ -51,6 +47,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         setEmail,
         setAccessToken,
         refreshToken,
+        logOut,
       }}
     >
       {children}

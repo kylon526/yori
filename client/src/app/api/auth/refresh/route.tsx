@@ -8,10 +8,7 @@ export async function POST() {
     const refreshToken = cookieStore.get("refreshToken")?.value;
 
     if (!refreshToken) {
-      return NextResponse.json(
-        { error: "Missing refresh token" },
-        { status: 401 },
-      );
+      return NextResponse.json({ message: "Missing Refresh Token" });
     }
 
     const payload = jwt.verify(

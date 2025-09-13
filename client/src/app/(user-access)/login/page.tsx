@@ -30,12 +30,17 @@ export default function LoginPage() {
   }
 
   useEffect(() => {
-    if (accessToken) {
-      router.push("/dashboard");
-    } else {
+    if (!accessToken) {
       refreshToken();
     }
-  }, [accessToken, router, refreshToken]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (accessToken) {
+      router.push("/dashboard");
+    }
+  }, [accessToken, router]);
 
   useEffect(() => {
     if (isSending) return;
