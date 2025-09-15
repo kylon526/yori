@@ -1,65 +1,66 @@
-@use 'sass:map';
+@use "sass:map";
 
-@use 'dark-theme' as dark;
-@use 'light-theme' as light;
+@use "dark-theme" as dark;
+@use "light-theme" as light;
 
 /** -------------------------------
  * Base colors
  * ------------------------------- */
 $base-colors: (
-	light: (
-		background: map.get(light.$surface-colors, a0),
-		foreground: #000000
-	),
-	dark: (
-		background: map.get(dark.$surface-colors, a0),
-		foreground: #efefef
-	)
+  light: (
+    background: map.get(light.$surface-colors, a0),
+    foreground: #000000,
+  ),
+  dark: (
+    background: map.get(dark.$surface-colors, a0),
+    foreground: #efefef,
+  ),
 );
 
 /** -------------------------------
  * Theme map combining all colors
  * ------------------------------- */
 $themes: (
-	light: (
-		base: map.get($base-colors, light),
-		primary: light.$primary-colors,
-		surface: light.$surface-colors,
-		surface-tonal: light.$surface-tonal-colors
-	),
-	dark: (
-		base: map.get($base-colors, dark),
-		primary: dark.$primary-colors,
-		surface: dark.$surface-colors,
-		surface-tonal: dark.$surface-tonal-colors
-	)
+  light: (
+    base: map.get($base-colors, light),
+    primary: light.$primary-colors,
+    surface: light.$surface-colors,
+    surface-tonal: light.$surface-tonal-colors,
+  ),
+  dark: (
+    base: map.get($base-colors, dark),
+    primary: dark.$primary-colors,
+    surface: dark.$surface-colors,
+    surface-tonal: dark.$surface-tonal-colors,
+  ),
 );
 
 /** -------------------------------
  * Mixin to generate CSS variables
  * ------------------------------- */
 @mixin theme-variables($theme-name) {
-	:root.#{$theme-name} {
-		// Base colors
-		@each $key, $value in map.get(map.get($themes, $theme-name), base) {
-			--#{$key}-color: #{$value};
-		}
+  :root.#{$theme-name} {
+    // Base colors
+    @each $key, $value in map.get(map.get($themes, $theme-name), base) {
+      --#{$key}-color: #{$value};
+    }
 
-		// Primary colors
-		@each $key, $value in map.get(map.get($themes, $theme-name), primary) {
-			--primary-#{$key}-color: #{$value};
-		}
+    // Primary colors
+    @each $key, $value in map.get(map.get($themes, $theme-name), primary) {
+      --primary-#{$key}-color: #{$value};
+    }
 
-		// Surface colors
-		@each $key, $value in map.get(map.get($themes, $theme-name), surface) {
-			--surface-#{$key}-color: #{$value};
-		}
+    // Surface colors
+    @each $key, $value in map.get(map.get($themes, $theme-name), surface) {
+      --surface-#{$key}-color: #{$value};
+    }
 
-		// Tonal surface colors
-		@each $key, $value in map.get(map.get($themes, $theme-name), surface-tonal) {
-			--surface-tonal-#{$key}-color: #{$value};
-		}
-	}
+    // Tonal surface colors
+    @each $key, $value in map.get(map.get($themes, $theme-name), surface-tonal)
+    {
+      --surface-tonal-#{$key}-color: #{$value};
+    }
+  }
 }
 
 /** Generate the classes */
