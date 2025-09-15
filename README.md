@@ -24,6 +24,8 @@ Deployment: Deployed on Vercel
 
 [Open the Yori app in your browser](https://yori-hazel.vercel.app)
 
+Enter your email address and complete the MFA step.
+
 Type a question in the chat interface, e.g.:
 
 “Tell me about Kylon's experience at Edward Jones.”
