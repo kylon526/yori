@@ -10,6 +10,8 @@ import MFAIcon from "./portfolio/MFAIcon";
 import LoadingIcon from "./portfolio/LoadingIcon";
 import UserLoginIcon from "./portfolio/UserLoginIcon";
 import Logo from "@/components/ui/logo/Logo";
+import Chat from "@/components/chat/Chat";
+import { motion } from "framer-motion";
 
 export default function DashboardPage() {
   const steps = [
@@ -54,15 +56,22 @@ export default function DashboardPage() {
   return (
     <div className={styles.dashboard}>
       <Logo />
-      <h1>Welcome to Kylon Tyner&apos;s portfolio project — Yori!</h1>
-      <p>
+      <motion.h1
+        initial={{ x: "-50%", opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        exit={{ x: "50%", opacity: 0 }}
+        transition={{ duration: 0.4, ease: "easeInOut", delay: 0.4 }}
+      >
+        Welcome to Kylon Tyner&apos;s portfolio project
+      </motion.h1>
+      {/* <p>
         You have just completed a{" "}
         <strong>secure multi-step authentication process</strong> designed to
         protect your account and demonstrate robust front-end security
         practices.
-      </p>
+      </p> */}
 
-      <div className={styles.flowGrid}>
+      {/* <div className={styles.flowGrid}>
         {steps.map((step, index) => (
           <Card
             key={index}
@@ -87,7 +96,8 @@ export default function DashboardPage() {
             <p>{step.description}</p>
           </Card>
         ))}
-      </div>
+      </div> */}
+      <Chat />
     </div>
   );
 }

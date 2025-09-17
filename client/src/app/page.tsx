@@ -9,10 +9,11 @@ export default function Home() {
   const { accessToken } = useAuth();
 
   useEffect(() => {
-    if (!accessToken) {
-      router.push("/login");
-    } else {
-      router.push("/dashboard");
-    }
-  }, [accessToken, router]);
+    router.push("/about/kylon");
+    // if (!accessToken) {
+    //   router.push("/login");
+    // } else {
+    //   router.push("/dashboard");
+    // }
+  }, [router]);
 }

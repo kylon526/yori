@@ -26,9 +26,9 @@ export default function ThemeToggle() {
           className={`${classes.knob} ${theme === "dark" ? classes.dark : ""}`}
         ></div>
       </button>
-      <span className={classes.labelText}>
+      {/* <span className={classes.labelText}>
         {theme === "dark" ? "Dark Mode" : "Light Mode"}
-      </span>
+      </span> */}
     </div>
   );
 }

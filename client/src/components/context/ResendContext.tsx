@@ -32,7 +32,7 @@ export const ResendProvider: React.FC<ResendProviderProps> = ({ children }) => {
     resetResendContext();
     const newCode = generateMfaCode();
 
-    await fetch("/api/mfa/send", {
+    await fetch("/api/email/mfa/send", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

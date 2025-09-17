@@ -29,10 +29,8 @@ export default function EmailInput({
   }
 
   return (
-    <div>
-      <label className={styles.label} htmlFor={id}>
-        {label}
-      </label>
+    <label className={styles.label} htmlFor={id}>
+      {label}
 
       <input
         type="email"
@@ -43,6 +41,6 @@ export default function EmailInput({
         placeholder={placeholder}
         required={required}
       />
-    </div>
+    </label>
   );
 }
