@@ -1,0 +1,35 @@
+.form {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  width: 100%;
+  gap: 1rem;
+  margin: 0 auto;
+
+  .contactInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  label {
+    font-weight: 600;
+    color: var(--foreground-color);
+  }
+
+  .success {
+    color: green;
+    font-weight: 500;
+  }
+
+  .error {
+    color: red;
+    font-weight: 500;
+  }
+}
+
+.contactContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}

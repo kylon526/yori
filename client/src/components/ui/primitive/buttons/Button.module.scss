@@ -3,11 +3,12 @@
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
   font-weight: 600;
+  font-size: 16px;
   cursor: pointer;
 
   &.primary {
     background-color: var(--primary-a10-color);
-    color: var(--surface-a0-color);
+    color: var(--foreground-color);
     &:hover {
       background-color: var(--primary-a0-color);
     }

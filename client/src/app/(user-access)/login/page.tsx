@@ -80,6 +80,7 @@ export default function LoginPage() {
                   label="Email"
                   id="email"
                   onChange={setEmail}
+                  value={email}
                   required
                 />
                 <Button>Continue With Email</Button>

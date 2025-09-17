@@ -5,6 +5,12 @@ import React, { createContext, useContext, useState, ReactNode } from "react";
 // Define the shape of the context
 interface ResendContextType {
   sendMfaCode: (email: string) => Promise<void>;
+  sendMessage: (
+    email: string,
+    name: string,
+    linkedIn: string,
+    message: string,
+  ) => Promise<void>;
   isSending: boolean;
   error: string | null;
   success: boolean;
@@ -32,7 +38,7 @@ export const ResendProvider: React.FC<ResendProviderProps> = ({ children }) => {
     resetResendContext();
     const newCode = generateMfaCode();
 
-    await fetch("/api/mfa/send", {
+    await fetch("/api/email/mfa/send", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -52,6 +58,35 @@ export const ResendProvider: React.FC<ResendProviderProps> = ({ children }) => {
       });
   };
 
+  async function sendMessage(
+    email: string,
+    name: string,
+    linkedIn: string,
+    message: string,
+  ) {
+    resetResendContext();
+    setIsSending(true);
+    await fetch("/api/email/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        email,
+        name,
+        linkedIn,
+        message,
+      }),
+    })
+      .then(() => {
+        setSuccess(true);
+      })
+      .catch((err) => {
+        setError(err.message || "Something went wrong");
+      })
+      .finally(() => {
+        setIsSending(false);
+      });
+  }
+
   function resetResendContext() {
     setIsSending(false);
     setError(null);
@@ -60,7 +95,14 @@ export const ResendProvider: React.FC<ResendProviderProps> = ({ children }) => {
 
   return (
     <ResendContext.Provider
-      value={{ sendMfaCode, isSending, error, success, resetResendContext }}
+      value={{
+        sendMfaCode,
+        sendMessage,
+        isSending,
+        error,
+        success,
+        resetResendContext,
+      }}
     >
       {children}
     </ResendContext.Provider>

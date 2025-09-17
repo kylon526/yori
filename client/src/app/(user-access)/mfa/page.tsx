@@ -28,7 +28,7 @@ export default function MFAPage() {
 
   async function submitMFA(code: string) {
     setBusy(true);
-    const response = await fetch("/api/mfa/verify", {
+    const response = await fetch("/api/email/mfa/verify", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

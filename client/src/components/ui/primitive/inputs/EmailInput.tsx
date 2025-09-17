@@ -1,38 +1,33 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent } from "react";
 import styles from "./inputs.module.scss";
 
 interface EmailInputProps {
   id: string;
-  initialValue?: string;
   label: string;
   placeholder?: string;
   onChange: (email: string) => void;
   required?: boolean;
+  value: string;
 }
 
 export default function EmailInput({
   id,
-  initialValue = "",
   label,
   placeholder = "",
   onChange,
   required = false,
+  value,
 }: EmailInputProps) {
-  const [value, setValue] = useState(initialValue);
-
   function handleChange(event: FormEvent<HTMLInputElement>) {
     const email = (event.target as HTMLInputElement).value;
     onChange(email);
-    setValue(email);
   }
 
   return (
-    <div>
-      <label className={styles.label} htmlFor={id}>
-        {label}
-      </label>
+    <label className={styles.label} htmlFor={id}>
+      {label}
 
       <input
         type="email"
@@ -43,6 +38,6 @@ export default function EmailInput({
         placeholder={placeholder}
         required={required}
       />
-    </div>
+    </label>
   );
 }
