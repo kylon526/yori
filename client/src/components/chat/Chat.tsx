@@ -61,8 +61,8 @@ export default function Chat({
 
       setMessages((prev) =>
         prev.map((msg, idx) =>
-          idx === prev.length - 1 ? { ...msg, text: partial } : msg
-        )
+          idx === prev.length - 1 ? { ...msg, text: partial } : msg,
+        ),
       );
     }
 
@@ -77,7 +77,7 @@ export default function Chat({
   return (
     <div className={styles.chat}>
       <div className={styles.messages}>
-        <h2>Hey! I'm YoriAI</h2>
+        <h2>Hey! I&apos;m YoriAI</h2>
         <p>{initialMessage}</p>
         <div style={{ width: "100%" }}>
           {messages.map((msg) => (

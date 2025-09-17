@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
-import { getDb } from "@/lib/db";
 import { ObjectId } from "mongodb";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
@@ -24,7 +23,6 @@ export interface MFAEntry {
 export async function POST(req: NextRequest) {
   const { email, name, message, linkedIn } =
     (await req.json()) as ResendPostBody;
-  const db = await getDb();
 
   const { data, error } = await resend.emails.send({
     from: "Yori Hiring <contact@resend.dev>",

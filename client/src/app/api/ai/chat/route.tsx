@@ -9,8 +9,7 @@ interface ChatRequestBody {
 }
 
 export async function POST(request: NextRequest) {
-  const { message, previous_response_id = null } =
-    (await request.json()) as ChatRequestBody;
+  const { message } = (await request.json()) as ChatRequestBody;
 
   const result = await streamText({
     model: openai("gpt-4o-mini"),

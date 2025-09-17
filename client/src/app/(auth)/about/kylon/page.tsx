@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./KylonPage.module.scss";
 import ContactForm from "./ContactForm";
 import Chat from "@/components/chat/Chat";
-import Avatar from "./Avatar";
 
 const skills: string[] = [
   "Angular 15+",
@@ -100,17 +99,17 @@ export default function KylonPage() {
         <section className={styles.section}>
           <h2>About Me</h2>
           <p>
-            Hi! I'm Kylon, a Senior Front-End Engineer with almost{" "}
+            Hi! I&apos;m Kylon, a Senior Front-End Engineer with almost{" "}
             <strong>8 years of experience</strong> building scalable and
             user-centric web applications. I specialize in Angular and
-            TypeScript, but I'm comfortable with any front-end framework. I have
-            a passion for crafting seamless, accessible, and high-performance
-            user experiences.
+            TypeScript, but I&apos;m comfortable with any front-end framework. I
+            have a passion for crafting seamless, accessible, and
+            high-performance user experiences.
           </p>
           <p>
-            When I'm not coding, I enjoy mentoring junior engineers, exploring
-            emerging technologies like AI and machine learning, and continuously
-            improving my craft.
+            When I&apos;m not coding, I enjoy mentoring junior engineers,
+            exploring emerging technologies like AI and machine learning, and
+            continuously improving my craft.
           </p>
           <p>
             Be sure to talk to <a href="#yori">Yori</a> if you have any

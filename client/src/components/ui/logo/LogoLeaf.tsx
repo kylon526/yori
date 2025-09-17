@@ -1,5 +1,3 @@
-import { AnimatePresence, motion } from "framer-motion";
-
 export default function LogoLeaf({ className }: { className: string }) {
   return (
     <svg

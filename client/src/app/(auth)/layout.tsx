@@ -1,11 +1,7 @@
 "use client";
 
-import { useAuth } from "@/components/context/AuthContext";
-import Button from "@/components/ui/primitive/buttons/Button";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import styles from "./DashboardLayout.module.scss";
-import HomeIcon from "@mui/icons-material/Home";
 import UserIcon from "@mui/icons-material/PersonSearch";
 import LogoLeaf from "@/components/ui/logo/LogoLeaf";
 import Avatar from "./about/kylon/Avatar";
@@ -15,8 +11,8 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { logOut } = useAuth();
-  const router = useRouter();
+  // const { logOut } = useAuth();
+  // const router = useRouter();
 
   const links = [
     // {
@@ -36,9 +32,9 @@ export default function DashboardLayout({
     },
   ];
 
-  async function logout() {
-    logOut().then(() => router.push("/"));
-  }
+  // async function logout() {
+  //   logOut().then(() => router.push("/"));
+  // }
 
   return (
     <>
