@@ -4,6 +4,7 @@ import "../styles/global.scss";
 import { ThemeProvider } from "@/components/context/ThemeContext";
 import ThemeToggle from "@/components/ui/theme-controls/ThemeToggle";
 import { AuthProvider } from "@/components/context/AuthContext";
+import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +32,7 @@ export default function RootLayout({
         <AuthProvider>
           <ThemeProvider>
             {children}
+            <Analytics />
             <ThemeToggle />
           </ThemeProvider>
         </AuthProvider>
