@@ -1,34 +1,31 @@
 "use client";
 
-import { CSSProperties, FormEvent, useState } from "react";
+import { CSSProperties, FormEvent } from "react";
 import styles from "./inputs.module.scss";
 
 interface TextareaInputProps {
   id: string;
-  initialValue?: string;
   label: string;
   placeholder?: string;
   onChange?: (value: string) => void;
   required?: boolean;
   rows?: number;
   style?: CSSProperties;
+  value: string;
 }
 
 export default function TextareaInput({
   id,
-  initialValue = "",
   label,
   placeholder = "",
   onChange = () => {},
   required = false,
   rows = 5,
   style = {},
+  value,
 }: TextareaInputProps) {
-  const [value, setValue] = useState(initialValue);
-
   function handleChange(event: FormEvent<HTMLTextAreaElement>) {
     const text = (event.target as HTMLTextAreaElement).value;
-    setValue(text);
     onChange(text);
   }
 

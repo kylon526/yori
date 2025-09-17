@@ -1,11 +1,11 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent } from "react";
 import styles from "./inputs.module.scss";
 
 interface TextInputProps {
   id: string;
-  initialValue?: string;
+  value: string;
   label: string;
   placeholder?: string;
   onChange?: (e: string) => void;
@@ -13,16 +13,13 @@ interface TextInputProps {
 
 export default function TextInput({
   id,
-  initialValue = "",
+  value,
   label,
   placeholder = "",
   onChange = () => {},
 }: TextInputProps) {
-  const [value, setValue] = useState(initialValue);
-
   function handleChange(event: FormEvent<HTMLInputElement>) {
     const value = (event.target as HTMLInputElement).value;
-    setValue(value);
     onChange(value);
   }
 

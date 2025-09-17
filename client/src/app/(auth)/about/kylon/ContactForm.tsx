@@ -9,7 +9,8 @@ import TextInput from "@/components/ui/primitive/inputs/TextInput";
 import TextareaInput from "@/components/ui/primitive/inputs/TextAreaInput";
 
 export default function ContactForm() {
-  const { isSending, error, success, resetResendContext } = useResend();
+  const { isSending, error, success, resetResendContext, sendMessage } =
+    useResend();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [linkedIn, setLinkedIn] = useState("");
@@ -21,21 +22,12 @@ export default function ContactForm() {
     e.preventDefault();
     resetResendContext();
 
-    try {
-      // Send message to your email through the existing MFA API
-      await fetch("/api/email/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email,
-          name,
-          linkedIn,
-          message,
-        }),
-      });
-    } catch (err) {
-      console.error(err);
-    }
+    sendMessage(email, name, linkedIn, message).then(() => {
+      setName("");
+      setEmail("");
+      setLinkedIn("");
+      setMessage("");
+    });
   };
 
   return (
@@ -47,6 +39,7 @@ export default function ContactForm() {
             placeholder="Full Name"
             onChange={setName}
             label="Your Name"
+            value={name}
           />
           <EmailInput
             id="email"
@@ -54,12 +47,14 @@ export default function ContactForm() {
             placeholder="your@email.com"
             required
             onChange={setEmail}
+            value={email}
           />
           <TextInput
             id="linkedIn"
             label="Your LinkedIn Profile"
             placeholder="https://linkedin.com/in/..."
             onChange={setLinkedIn}
+            value={linkedIn}
           />
         </div>
         <TextareaInput
@@ -69,6 +64,7 @@ export default function ContactForm() {
           required
           placeholder="Type your message to Kylon here..."
           style={{ flexGrow: 1 }}
+          value={message}
         />
         <div></div>
         <Button disabled={isSending || Boolean(error)}>
