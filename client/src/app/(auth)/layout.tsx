@@ -5,12 +5,15 @@ import styles from "./DashboardLayout.module.scss";
 import UserIcon from "@mui/icons-material/PersonSearch";
 import LogoLeaf from "@/components/ui/logo/LogoLeaf";
 import Avatar from "./about/kylon/Avatar";
+import HamburgerMenuToggle from "@/components/ui/navigation/HamburgerMenuToggle";
+import { useState } from "react";
 
 export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
   // const { logOut } = useAuth();
   // const router = useRouter();
 
@@ -36,14 +39,30 @@ export default function DashboardLayout({
   //   logOut().then(() => router.push("/"));
   // }
 
+  function handleMenuToggle() {
+    setMenuOpen((prev) => !prev);
+  }
+
   return (
     <>
-      <main className={styles.main}>
-        <nav className={styles.nav}>
+      <div
+        className={`${styles.layoutContainer} ${menuOpen ? styles.menuOpen : ""}`}
+      >
+        <HamburgerMenuToggle
+          onToggle={handleMenuToggle}
+          className={styles.hamburgerMenu}
+          open={menuOpen}
+        />
+        <nav className={`${styles.nav} ${menuOpen ? styles.open : ""}`}>
           <div className={styles.linksContainer}>
             {links &&
               links.map((link) => (
-                <Link key={link.path} href={link.path} className={styles.link}>
+                <Link
+                  key={link.path}
+                  href={link.path}
+                  className={styles.link}
+                  onClick={handleMenuToggle}
+                >
                   <link.icon className={styles.linkIcon} />
                   {link.text}
                 </Link>
@@ -51,7 +70,9 @@ export default function DashboardLayout({
             {/* <Button onClick={logout}>Log Out</Button> */}
           </div>
         </nav>
-        <div>
+        <div
+          className={`${styles.contentContainer} ${menuOpen ? styles.menuOpen : ""}`}
+        >
           <header className={styles.header}>
             <Avatar />
             <h1>Kylon Tyner</h1>
@@ -64,7 +85,7 @@ export default function DashboardLayout({
             &copy; 2025 Kylon Tyner. All rights reserved.
           </footer>
         </div>
-      </main>
+      </div>
     </>
   );
 }

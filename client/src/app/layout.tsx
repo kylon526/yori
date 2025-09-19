@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/context/ThemeContext";
 import ThemeToggle from "@/components/ui/theme-controls/ThemeToggle";
 import { AuthProvider } from "@/components/context/AuthContext";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,12 +28,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className="dark" data-scroll-behavior="smooth">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <AuthProvider>
           <ThemeProvider>
             {children}
             <Analytics />
+            <SpeedInsights />
             <ThemeToggle />
           </ThemeProvider>
         </AuthProvider>
