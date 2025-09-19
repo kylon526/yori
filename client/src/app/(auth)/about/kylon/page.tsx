@@ -148,7 +148,7 @@ export default function KylonPage() {
         </section>
 
         <section className={styles.section}>
-          <h2 style={{ display: "flex", justifyContent: "space-between" }}>
+          <h2 className={styles.contactHeading}>
             Want to Hire Me?{" "}
             <a
               href="https://www.linkedin.com/in/kylon-tyner/"
