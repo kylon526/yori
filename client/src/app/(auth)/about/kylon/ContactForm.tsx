@@ -63,7 +63,7 @@ export default function ContactForm() {
           onChange={setMessage}
           required
           placeholder="Type your message to Kylon here..."
-          style={{ flexGrow: 1 }}
+          style={{ flexGrow: 1, flexBasis: "200px" }}
           value={message}
         />
         <div></div>

@@ -1,10 +1,31 @@
 .nav {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  padding: 1rem;
   background-color: var(--surface-a10-color);
+  overflow: hidden;
+  text-align: center;
+  transition: left 0.3s ease;
+
+  @media screen and (min-width: 600px) {
+    position: relative;
+    width: auto;
+    left: 0;
+    padding: 1rem;
+    height: unset;
+    overflow: unset;
+  }
+
+  &.open {
+    left: 0;
+    padding: 1rem;
+    height: 100vh;
+  }
 
   .linksContainer {
     position: sticky;
@@ -56,11 +77,28 @@
   }
 }
 
-.main {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  width: 100vw;
-  min-height: 100vh;
+.layoutContainer {
+  @media screen and (min-width: 600px) {
+    display: grid;
+    grid-template-columns: auto 1fr;
+  }
+
+  .hamburgerMenu {
+    position: fixed;
+    top: 0.5rem;
+    right: 0.5rem;
+    transition: right 0.3s ease;
+
+    @media screen and (min-width: 600px) {
+      display: none;
+    }
+  }
+
+  .contentContainer {
+    &.menuOpen {
+      height: 100vh;
+    }
+  }
 }
 
 .footer {
