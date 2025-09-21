@@ -1,10 +1,14 @@
 import { MongoClient, Db } from "mongodb";
+import dotenv from "dotenv";
+
+dotenv.config({ path: "./.env.local" });
 
 declare global {
   var _mongoClientPromise: Promise<MongoClient> | undefined;
 }
 
 const uri = process.env.MONGODB_URI!;
+console.log("URI:", uri);
 let client: MongoClient;
 
 if (!globalThis._mongoClientPromise) {
